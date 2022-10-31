@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2456f326ce6a43e9afc04556f84a75bd" Name="Diagram1">
+        <EntityTypeShape EntityType="BikeStoresModel.brand" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BikeStoresModel.category" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BikeStoresModel.product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="BikeStoresModel.FK__products__brand___35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="BikeStoresModel.FK__products__catego__36B12243" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BikeStoresModel.stock" Width="1.5" PointX="5.625" PointY="5.5" />
+        <EntityTypeShape EntityType="BikeStoresModel.customer" Width="1.5" PointX="5.625" PointY="11.375" />
+        <EntityTypeShape EntityType="BikeStoresModel.order_items" Width="1.5" PointX="10.125" PointY="7" />
+        <EntityTypeShape EntityType="BikeStoresModel.order" Width="1.5" PointX="7.875" PointY="12.125" />
+        <EntityTypeShape EntityType="BikeStoresModel.staff" Width="1.5" PointX="5.625" PointY="15.5" />
+        <EntityTypeShape EntityType="BikeStoresModel.store" Width="1.5" PointX="3.375" PointY="8.875" />
+        <AssociationConnector Association="BikeStoresModel.FK__order_ite__produ__3A81B327" />
+        <AssociationConnector Association="BikeStoresModel.FK__stocks__product___37A5467C" />
+        <AssociationConnector Association="BikeStoresModel.FK__stocks__store_id__38996AB5" />
+        <AssociationConnector Association="BikeStoresModel.FK__orders__customer__3B75D760" />
+        <AssociationConnector Association="BikeStoresModel.FK__order_ite__order__398D8EEE" />
+        <AssociationConnector Association="BikeStoresModel.FK__orders__staff_id__3C69FB99" />
+        <AssociationConnector Association="BikeStoresModel.FK__orders__store_id__3D5E1FD2" />
+        <AssociationConnector Association="BikeStoresModel.FK__staffs__manager___3E52440B" />
+        <AssociationConnector Association="BikeStoresModel.FK__staffs__store_id__3F466844" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

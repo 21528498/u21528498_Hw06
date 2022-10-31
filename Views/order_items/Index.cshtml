@@ -1,0 +1,82 @@
+﻿@*@model IEnumerable<u21528498_Hw06.Models.order_items>*@
+@model IPagedList<u21528498_Hw06.Models.order_items>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>Orders</h1>
+
+@using PagedList.Mvc;
+@using PagedList;
+
+@using (Html.BeginForm("Index", "order_items", FormMethod.Get))
+{
+    <form>
+        <div class="row">
+            <div class="col-lg-3">
+                <input type="date" name="date" class="form-control" />
+            </div>
+            <div class="col-1">
+                <input type="submit" value="Search" class="form-control btn btn-info" />
+            </div>
+        </div>
+    </form>
+}
+
+@for (int i = 0; i < Model.Count(); i++)
+{
+    if (Model.Where(s => s.order_id == i).Count() > 0)
+    {
+        <h2>Order @Model.Where(s => s.order_id == i).FirstOrDefault().order_id -@Model.Where(s => s.order_id == i).FirstOrDefault().order.order_date.Date.ToShortDateString() </h2>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().product.product_name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().list_price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.First().quantity)
+                </th>
+                <th>
+                    Total
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.Where(p => p.order_id == i).ToList())
+            {
+                <tr>
+                    @*<td>@f.order_id @f.product.product_name</td>
+                        <td>@product.price</td>
+                        <td>@product.quantity</td>
+                        <td>@product.total</td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.product.product_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.list_price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.quantity)
+                    </td>
+
+                    <td>
+                        @item.total()
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td></td>
+                <td>Grand Total</td>
+                <td>@Model.Where(p => p.order_id == i).Sum(p => p.total())</td>
+            </tr>
+        </table>
+    }
+}
+
+@Html.PagedListPager(Model, i => Url.Action("Index", "order_items", new { i, search = Request.QueryString["search"] }))
+
+
